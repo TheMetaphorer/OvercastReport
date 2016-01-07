@@ -5,8 +5,11 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import ga.dore.overcastreport.client.capture.SnapshotCapture;
 
 public class Snap implements ICommand {
 
@@ -25,7 +28,11 @@ public class Snap implements ICommand {
     }
 
     public void execute(ICommandSender sender, String[] arg) {
-        sender.addChatMessage(new ChatComponentText("tested."));
+        try {
+            SnapshotCapture.snapScreen(sender);
+        } catch (Exception exception) {
+            sender.addChatMessage(new ChatComponentText("An exception has occured: " + exception.getMessage()));
+        }
     }
 
     public boolean isUsernameIndex(String[] args, int num) {
@@ -33,7 +40,7 @@ public class Snap implements ICommand {
     }
 
     public String getCommandUsage(ICommandSender sender) {
-        sender.addChatMessage(new ChatComponentText("/record"));
+        sender.addChatMessage(new ChatComponentText("/snap"));
         return "";
     }
 

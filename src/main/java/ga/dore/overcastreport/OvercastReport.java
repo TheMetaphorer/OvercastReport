@@ -9,7 +9,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import ga.dore.overcastreport.client.commands.Record;
+
+import ga.dore.overcastreport.client.commands.Snap;
 
 @Mod(modid=OvercastReport.MODID, name=OvercastReport.MODNAME, version=OvercastReport.MODVER) //Tell forge "Oh hey, there's a new mod here to load."
 public class OvercastReport //Start the class Declaration
@@ -38,7 +39,7 @@ public class OvercastReport //Start the class Declaration
 
     @EventHandler
     public void registerCommands(FMLServerStartingEvent event) {
-        event.registerServerCommand(new Record());
+        event.registerServerCommand(new Snap());
     }
 
     @EventHandler
